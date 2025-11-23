@@ -1,91 +1,493 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แนะนำตัวเอง | Your Name</title>
-    <style>
-        body {
-            font-family: 'Prompt', sans-serif;
-            background: linear-gradient(135deg, #74ABE2, #5563DE);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>67021130</title>
 
-        header {
-            padding: 60px 20px;
-        }
+  <style>
+    :root {
+      --bg: #050513;
+      --panel: #0b0b23;
+      --accent: #4ef5ff;
+      --accent-2: #ff4ecd;
+      --text-main: #f5f7ff;
+      --text-sub: #8b8fb0;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow-neon: 0 0 18px rgba(78, 245, 255, 0.8);
+      --radius-lg: 18px;
+    }
 
-        img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            margin-bottom: 20px;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #291551 0, transparent 55%),
+        radial-gradient(circle at bottom, #102b46 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
 
-        h2 {
-            font-weight: normal;
-            color: #E0E0E0;
-        }
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        );
+      background-size: 60px 60px;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        section {
-            background: #fff;
-            color: #333;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 700px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 18px 60px;
+    }
 
-        a {
-            color: #5563DE;
-            text-decoration: none;
-        }
+    /* ------- TOP BAR ------- */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--accent);
+    }
 
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #E0E0E0;
-        }
-    </style>
+    .chip {
+      border-radius: 999px;
+      padding: 6px 14px;
+      border: 1px solid var(--border-soft);
+      background: rgba(5, 5, 19, 0.85);
+      font-size: 12px;
+      color: var(--text-sub);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #4ef5aa;
+      box-shadow: 0 0 10px rgba(78, 245, 170, 0.9);
+    }
+
+    /* ------- HERO ------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+
+    .hero-main {
+      padding: 24px 22px 26px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at top left, #201143 0, #080818 55%);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background: conic-gradient(
+        from 120deg,
+        rgba(78, 245, 255, 0.22),
+        transparent,
+        rgba(255, 78, 205, 0.18),
+        transparent,
+        rgba(78, 245, 255, 0.22)
+      );
+      mix-blend-mode: screen;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-main-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+    }
+
+    .name {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .role {
+      font-size: 24px;
+      font-weight: 500;
+      color: #f7f0ff;
+      margin-bottom: 14px;
+    }
+
+    .bio {
+      font-size: 14px;
+      color: var(--text-sub);
+      max-width: 540px;
+    }
+
+    .stats-row {
+      margin-top: 24px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: rgba(8, 8, 26, 0.9);
+      border-radius: 14px;
+      padding: 10px 16px;
+      border: 1px solid var(--border-soft);
+      min-width: 120px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      letter-spacing: 0.09em;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 4px;
+      color: var(--accent-2);
+    }
+
+    .links-row {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: 1px solid var(--accent);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      color: #050513;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow-neon);
+      font-weight: 600;
+    }
+
+    .btn-ghost {
+      color: var(--accent);
+      background: transparent;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(78, 245, 255, 0.1);
+    }
+
+    /* ------- HERO SIDE ------- */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 0 22px rgba(0, 0, 0, 0.8);
+    }
+
+    .panel h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel h3 span.icon {
+      font-size: 18px;
+    }
+
+    .panel p {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    .panel ul {
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    .panel li {
+      font-size: 13px;
+      color: var(--text-sub);
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .panel li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ------- PROJECTS ------- */
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 14px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span.bar {
+      display: inline-block;
+      width: 42px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      background: #111018;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 190px;
+      cursor: pointer;
+      transition: 0.25s transform, 0.25s box-shadow, 0.25s border-color;
+    }
+
+    .project-top {
+      background: linear-gradient(145deg, #ff9966, #ff4ecd);
+      padding: 26px 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .project-bottom {
+      background: #060612;
+      padding: 16px;
+      flex: 1;
+    }
+
+    .project-bottom h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .project-bottom p {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-neon);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* ------- RESPONSIVE ------- */
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-side {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 680px) {
+      h1 {
+        font-size: 36px;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-row {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="grid-bg"></div>
 
-    <header>
-        <img src="your-photo.jpg" alt="รูปโปรไฟล์ของฉัน">
-        <h1>สวัสดีครับ ผมชื่อ [Your Name]</h1>
-        <h2>Frontend Developer | Web Designer | Content Creator</h2>
-    </header>
+  <div class="container">
+    <div class="top-bar">
+      <div class="logo">PORTFOLIO</div>
+      <div class="chip">
+        <span class="chip-dot"></span>
+        Open to opportunities
+      </div>
+    </div>
 
-    <section>
-        <h3>เกี่ยวกับฉัน</h3>
-        <p>ผมเป็นคนที่ชอบสร้างเว็บไซต์และเรียนรู้เทคโนโลยีใหม่ ๆ อยู่เสมอ มีความสนใจด้านการออกแบบ UX/UI และการพัฒนาเว็บด้วย HTML, CSS, และ JavaScript รวมถึง Frameworks ต่าง ๆ เช่น React และ Vue.js</p>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-main-inner">
+          <div class="tagline">Hi, I am</div>
+          <div class="name">Pattarapol Ruchanikornpen</div>
+          <div class="role">UI/UX Designer · Frontend Dev</div>
+          <p class="bio">
+            ชอบออกแบบประสบการณ์ใช้งาน (UX) และหน้าตา (UI) ให้ใช้แล้วรู้สึก “ลื่นและลงตัว”
+            สนใจงานด้านเว็บแอป, โปรเจกต์สายเทค และงานที่ได้ทำร่วมกับทีมหลากหลายสกิล
+          </p>
+
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-label">Experience</div>
+              <div class="stat-value">1+ Years</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Projects</div>
+              <div class="stat-value">5+ Works</div>
+            </div>
+          </div>
+
+          <div class="links-row">
+            <a href="#" class="btn-primary">View Resume</a>
+            <a href="#" class="btn-ghost">Contact Me</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE INFO -->
+      <div class="hero-side">
+        <div class="panel">
+          <h3><span class="icon">🎯</span>Design Focus</h3>
+          <p>
+            เน้น Human-centered design, ใช้จริงได้, อ่านง่าย
+            และใส่ดีเทลเล็กๆ ที่ทำให้ประสบการณ์ดีกว่าที่คาดหวัง
+          </p>
+        </div>
+        <div class="panel">
+          <h3><span class="icon">⚡</span>Skills & Tools</h3>
+          <ul>
+            <li>Figma / Prototyping & Wireframing</li>
+            <li>User Research & Usability Testing</li>
+            <li>HTML, CSS, JavaScript (Frontend)</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <h3>ติดต่อฉัน</h3>
-        <p>📧 Email: <a href="mailto:your@email.com">your@email.com</a></p>
-        <p>🌐 เว็บไซต์ส่วนตัว: <a href="https://yourwebsite.com" target="_blank">yourwebsite.com</a></p>
-        <p>💼 LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+    <!-- PROJECTS -->
+    <h2 class="section-title">
+      <span class="bar"></span> Selected Projects
+    </h2>
+
+    <section class="projects-grid">
+      <article class="project-card">
+        <div class="project-top">Whisk Cafe</div>
+        <div class="project-bottom">
+          <h4>Mobile Coffee Experience</h4>
+          <p>
+            ออกแบบแอปสั่งกาแฟล่วงหน้า เลือกเมนู โปรโมชัน และติดตามออเดอร์แบบเรียลไทม์
+          </p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">Showcase ICT</div>
+        <div class="project-bottom">
+          <h4>Faculty Event Website</h4>
+          <p>
+            เว็บโชว์ผลงานนักศึกษาและกิจกรรมในคณะ
+            เน้นเลย์เอาต์อ่านง่ายและเข้าถึงข้อมูลได้รวดเร็ว
+          </p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">Drive Dashboard</div>
+        <div class="project-bottom">
+          <h4>Data Visualization UI</h4>
+          <p>
+            Dashboard สำหรับดูข้อมูลการขับรถ เช่น ความเร็ว ระยะทาง และคะแนนความปลอดภัย
+          </p>
+        </div>
+      </article>
     </section>
 
     <footer>
-        &copy; 2025 [Your Name] | สร้างด้วย 💙 และ HTML + CSS
+      © 2025 Your Name — UI/UX Designer · Frontend Developer
     </footer>
-
+  </div>
 </body>
 </html>
